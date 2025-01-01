@@ -101,6 +101,6 @@ class MultiPageApp:
             messagebox.showerror("Error", "Invalid email or password")
 
 if __name__ == "__main__":
-    root = Window(themename="superhero")  # Applying darkest theme
+    root = Window(themename="superhero")
     app = MultiPageApp(root)
     root.mainloop()
