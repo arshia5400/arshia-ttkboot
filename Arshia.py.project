@@ -1,0 +1,37 @@
+from gooey import Gooey, GooeyParser
+
+
+def data_base():
+    with open('database.txt','w') as file:
+        file.write("arshia ezzat")
+        file.write("sadegh ahmadi")
+        file.write("mohammad mohammadi")
+
+
+@Gooey(program_name="Login Checker", program_description="Check if a user exists in the database.")
+def main():
+    parser = GooeyParser(description="Enter your name to check if you are in the database.")
+
+    parser.add_argument('First Name', help="Enter your first name", widget='TextField')
+    parser.add_argument('Last Name', help="Enter your last name", widget='TextField')
+
+    args = parser.parse_args()
+
+    full_name = f"{args.First_Name} {args.Last_Name}"
+
+    try:
+
+        with open('database.txt', 'r') as file:
+            users = file.read().splitlines()
+
+            if full_name in users:
+                print("Login successful! Welcome to the system.")
+            else:
+                print("Login failed! User not found in the database.")
+    except FileNotFoundError:
+        print("Database file not found! Please initialize the database.")
+
+
+if __name__ == '__main__':
+    initialize_database()  # Ensure the database file exists with sample data
+    main()
