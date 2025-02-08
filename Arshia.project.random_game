@@ -1,0 +1,68 @@
+import random
+import datetime
+#random game
+def random_game():
+
+    print("Welcome to the Random Number Game!")
+    random_number = random.randint(1, 100)
+    try:
+        user_guess = int(input("Guess a number between 1 and 100: "))
+        if user_guess == random_number:
+            print("Congratulations! You guessed it right!")
+        elif user_guess > random_number:
+            print(f"Your guess is too high! The number was {random_number}.")
+        else:
+            print(f"Your guess is too low! The number was {random_number}.")
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+#calculator
+def calculator():
+  
+    print("Welcome to the Calculator!")
+    try:
+        num1 = float(input("Enter the first number: "))
+        operator = input("Enter an operator (+, -, *, /): ")
+        num2 = float(input("Enter the second number: "))
+        
+        if operator == "+":
+            print(f"Result: {num1 + num2}")
+        elif operator == "-":
+            print(f"Result: {num1 - num2}")
+        elif operator == "*":
+            print(f"Result: {num1 * num2}")
+        elif operator == "/":
+            if num2 != 0:
+                print(f"Result: {num1 / num2}")
+            else:
+                print("Error: Division by zero!")
+        else:
+            print("Invalid operator.")
+    except ValueError:
+        print("Invalid input. Please enter valid numbers.")
+#time
+def display_date():
+   
+    current_date = datetime.datetime.now()
+    print(f"Today's date and time: {current_date.strftime('%Y-%m-%d %H:%M:%S')}")
+
+# Main menu
+while True:
+    print("Main Menu:")
+    print("1. Play Random Number Game")
+    print("2. Use Calculator")
+    print("3. Display Current Date and Time")
+    print("4. Exit")
+    
+    user_choice = input("Enter your choice (1, 2, 3, or 4): ")
+    
+    if user_choice == "1":
+        random_game()
+    elif user_choice == "2":
+        calculator()
+    elif user_choice == "3":
+        display_date()
+    elif user_choice == "4":
+        print("Goodbye!")
+        break
+    else:
+        print("Error: Invalid choice. Please enter 1, 2, 3, or 4.")
